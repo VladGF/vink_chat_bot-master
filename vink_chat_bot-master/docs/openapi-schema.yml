@@ -1,0 +1,141 @@
+openapi: 3.0.0
+info:
+  title: Чат-бот Vink
+  description: Документация к API
+  version: 1.0.0
+servers:
+  - url: https://example.com
+paths:
+  /api/order/info/{pk}:
+    get:
+      summary: Получить информацию о конкретном заказе
+      parameters:
+        - name: pk
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Информация о заказе
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Информация о заказе от gpt."
+        '404':
+          description: Заказ не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Заказ не найден."
+  /api/product/info/{product_number}:
+    get:
+      summary: Получить информацию о конкретном продукте
+      parameters:
+        - name: product_number
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Информация о продукте
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Информация о продукте от gpt."
+        '404':
+          description: Продукт не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Продукт не найден."
+  /api/product/check/{product_number}:
+    get:
+      summary: Проверить наличие товара
+      parameters:
+        - name: product_number
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Проверка наличия товара
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Ответ от gpt где есть в наличии товар."
+        '404':
+          description: Продукт не найден
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Продукт не найден."
+  /api/product/info:
+    get:
+      summary: Подготовленный общий вопрос, когда пользователь нажимает "Консультация по товару"
+      responses:
+        '200':
+          description: Ответ на запрос информации о товаре
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Введите артикул товара."
+  /api/order/info:
+    get:
+      summary: Подготовленный общий вопрос, когда пользователь нажимает "Информация по заказу"
+      responses:
+        '200':
+          description: Ответ на запрос информации по заказу
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Введите номер заказа."
+  /api/product/check:
+    get:
+      summary: Подготовленный общий вопрос, когда пользователь нажимает "Проверить наличие товара"
+      responses:
+        '200':
+          description: Ответ на запрос
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Введите артикул товара."
+

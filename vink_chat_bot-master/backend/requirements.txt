@@ -1,0 +1,6 @@
+Django==2.2.16
+requests==2.26.0
+sorl-thumbnail
+Faker
+djangorestframework==3.15.1
+django-cors-headers==4.3.1
